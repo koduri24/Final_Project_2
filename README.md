@@ -27,24 +27,28 @@ The Schematic of 5T SRAM is shown below. The width of the NMOS transistor connec
 The schematic diagram of the inverter in above 5T SRAM and symbol of the 5T SRAM are shown below:
 
 <p align="center">
-    <img src="./Inverter.png" alt="Design Schetch" width="300" />
-    <img src="./SRAM symbol.png" alt="The schetch of the wand" width="300" />
+    <img src="./Inverter.png" alt="The Internal Circuit" width="500" />
 </p>
+<p align="center"><strong>Figure : </strong> The Schematic of the inverter in 5T SRAM</p>
+
 
 <p align="center">
-    <strong>Figure 8:</strong> The Schematic of the inverter and the symbol of the 5T SRAM
+    <img src="./SRAM symbol.png" alt="The Internal Circuit" width="500"/>
 </p>
+<p align="center"><strong>Figure : </strong> The symbol of the 5T SRAM</p>
 
-Next, we assemble 5T SRAMS to be 16 bits SRAM, the schematic and the symbol are shown belwo:
 
-<p align="center">
-    <img src="./image-4.png" alt="Design Schetch" width="300" />
-    <img src="./image-5.png" alt="The schetch of the wand" width="300" />
-</p>
+Next, we assemble 5T SRAMS to be 16 bits SRAM, the schematic and the symbol are shown below:
 
 <p align="center">
-    <strong>Figure 8:</strong> The Schematic of the inverter and the symbol of the 5T SRAM
+    <img src="./image-4.png" alt="The Internal Circuit" style="width: 500px;" />
 </p>
+<p align="center"><strong>Figure : </strong> The Schematic of the 16bits SRAM</p>
+
+<p align="center">
+    <img src="./image-5.png" alt="The Internal Circuit" style="width: 500px;" />
+</p>
+<p align="center"><strong>Figure : </strong> The Symbol of the 16bits SRAM</p>
 
 # 2. Design Description
 
