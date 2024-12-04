@@ -50,6 +50,11 @@ Next, we assemble 5T SRAMS to be 16 bits SRAM, the schematic and the symbol are 
 </p>
 <p align="center"><strong>Figure : </strong> The Symbol of the 16bits SRAM</p>
 
+## 1.2 LUT
+
+
+
+
 # 2. Design Description
 
 ## 2.1 5T SRAM
@@ -152,8 +157,9 @@ For the D flip flop part, we choose to use two transmission gates and two invert
 <p align="center"><strong>Figure : </strong> The Configuration of D Flip Flop</p>
 
 Clock 1 and clock 2 are two phase non-overlapping clocks and ~CLK1 and ~CLK2 are their complements, respectively
+
 <p align="center">
-    <img src="./image-1.png" alt="The Internal Circuit" width="500" />
+    <img src="./image-6.png" alt="The Internal Circuit" width="500" />
 </p>
 <p align="center"><strong>Figure : </strong> The Configuration of Clock&Clock~</p>
 When CLK1 is high, high input D go through the first transmission gate and inverter. At this time CLK1 is low, the second transmission gate is closed. ~Q is low. And when clock changing, CLK1 is low and CLK2 is high. The first transmission gate is closed and the second transmission gate is open. So ~Q goes through the second transmission gate and inverter then Q becomes high. And if input D is low, ~Q and Q will be inverse than the above situation.
