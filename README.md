@@ -8,11 +8,15 @@
 
 
 # 2. Design Description
+
 ## 2.1 5T SRAM
+
 ### 2.1.1 Design of a 5T SRAM Cell
+
 In this section, we propose the design of a 5T SRAM cell, as it is expected to demonstrate improved performance compared to the traditional 6T SRAM design. The key components of the 5T SRAM cell and their functions are detailed as follows:
 
 **Key Components**
+
 1. **Cross-Coupled Inverters:**
 The 5T SRAM cell incorporates two cross-coupled inverters that serve as bistable elements for data storage. These inverters are connected such that the output of one inverter is fed into the input of the other, forming a feedback loop. This configuration ensures a stable storage of binary states (0 or 1), as it maintains either a strong 0 or a strong 1 under normal operating conditions.
 2. **Inverter for Load Signal Control:**
@@ -56,6 +60,80 @@ The 5T SRAM schematic features three single NMOS transistors with the following 
 
 3. **Data Output:** Finally, the stored data can be read from the bit line output.
 
+## 2.2 LUT
+
+### 2.2.1 Design of The LUT with Pass-Logic Multiplexers
+
+To construct the LUT (Lookup Table), the design employs 15 pass-logic multiplexers (MUXs) arranged in a hierarchical structure, followed by two inverters at the final stage to enhance the output voltage to 5V. The arrangement of the MUXs is organized into four stages:
+
+1. **First Stage:** The first stage consists of 8 MUXs, each capable of selecting one of 2 inputs from the 16 data inputs. The selection is controlled by the third address input (input3), resulting in 8 outputs.
+
+2. **Second Stage:** The 8 outputs from the first stage serve as the inputs for the 4 MUXs in the second stage. This stage further reduces the inputs to 4.
+
+3. **Third Stage:** The 4 outputs from the second stage are passed to 2 MUXs in the third stage, narrowing the inputs down to 2.
+
+4. **Final Stage:** In the final stage, a single MUX determines the final output from the 2 inputs received. The output is then passed through two inverters to restore the voltage level to 5V, ensuring proper signal strength.
+
+This hierarchical arrangement ensures the LUT efficiently selects one output from the 16 data inputs based on the 4-bit address.
+
+### 2.2.2 MUX Implementation
+
+Each MUX is implemented using a pass-logic configuration, consisting of an inverter and two NMOS transistors. The design operates as follows:
+
+- The **address signal** (s) directly controls the gate of the NMOS transistor connected to the input I1.
+- The address signal (s) also passes through the inverter, whose output is connected to the gate of the NMOS transistor tied to the input I0.
+- **Operation:** When the address signal (s) is high, the NMOS transistor associated with I1 is activated, transmitting I1 to the MUX output. When the address signal (s) is low, the NMOS transistor associated with I0 is activated, transmitting I0 to the output.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -68,6 +146,7 @@ The 5T SRAM schematic features three single NMOS transistors with the following 
 
 
 # 3. Design Validation/Verification
+
 ## 3.1 SRAM
 
 # 4. Design Metric Test Cases
