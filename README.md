@@ -2,7 +2,19 @@
 <p style="text-align: center; font-size: 14px; font-style: italic;">Univerisity of Pennsylvania<br>ESE5700<br></p>
 <p style="text-align: center; font-size: 14px; font-style: italic;">Jiajun Chen & Venkateswara Koduri<br>12/4/2024</p>
 
+
+<!-- <p align="center">
+    <img src="./image-14.png" alt="Design Schetch" width="300" />
+    <img src="./image-15.png" alt="The schetch of the wand" width="300" />
+</p>
+
+<p align="center">
+    <strong>Figure 8:</strong> The 3D Module of The Wand
+</p> -->
+
+
 # 1. Design Schematics
+
 ## 1.1 5T SRAM
 
 
@@ -13,7 +25,13 @@
 
 ### 2.1.1 Design of a 5T SRAM Cell
 
-In this section, we propose the design of a 5T SRAM cell, as it is expected to demonstrate improved performance compared to the traditional 6T SRAM design. The key components of the 5T SRAM cell and their functions are detailed as follows:
+In this section, we propose the design of a 5T SRAM cell, as it is expected to demonstrate improved performance compared to the traditional 6T SRAM design. 
+
+<p align="center">
+    <img src="./image-3.png" alt="The Internal Circuit" width="500" />
+</p>
+<p align="center"><strong>Figure : </strong> The Configuration of The 5T SRAM</p>
+The key components of the 5T SRAM cell and their functions are detailed as follows:
 
 **Key Components**
 
@@ -31,6 +49,7 @@ The design includes a transmission gate composed of one NMOS and one PMOS transi
 * When the load input is high, the transmission gate opens, allowing the data input to be written into the cross-coupled inverters.
 
 * When the load input is low, the transmission gate closes, effectively isolating the data input from the storage elements.
+
 4. **Single NMOS Transistors**
 The 5T SRAM schematic features three single NMOS transistors with the following roles:
 
@@ -64,7 +83,15 @@ The 5T SRAM schematic features three single NMOS transistors with the following 
 
 ### 2.2.1 Design of The LUT with Pass-Logic Multiplexers
 
-To construct the LUT (Lookup Table), the design employs 15 pass-logic multiplexers (MUXs) arranged in a hierarchical structure, followed by two inverters at the final stage to enhance the output voltage to 5V. The arrangement of the MUXs is organized into four stages:
+To construct the LUT (Lookup Table), the design employs 15 pass-logic multiplexers (MUXs) arranged in a hierarchical structure, followed by two inverters at the final stage to enhance the output voltage to 5V. 
+
+<p align="center">
+    <img src="./image-2.png" alt="The Internal Circuit" width="500" />
+</p>
+<p align="center"><strong>Figure : </strong> The Configuration of The LUT</p>
+
+
+The arrangement of the MUXs is organized into four stages:
 
 1. **First Stage:** The first stage consists of 8 MUXs, each capable of selecting one of 2 inputs from the 16 data inputs. The selection is controlled by the third address input (input3), resulting in 8 outputs.
 
@@ -84,10 +111,21 @@ Each MUX is implemented using a pass-logic configuration, consisting of an inver
 - The address signal (s) also passes through the inverter, whose output is connected to the gate of the NMOS transistor tied to the input I0.
 - **Operation:** When the address signal (s) is high, the NMOS transistor associated with I1 is activated, transmitting I1 to the MUX output. When the address signal (s) is low, the NMOS transistor associated with I0 is activated, transmitting I0 to the output.
 
+### 2.3 D-Type Flip-Flop
 
+For the D flip flop part, we choose to use two transmission gates and two inverters as the picture show below.
 
+<p align="center">
+    <img src="./image.png" alt="The Internal Circuit" width="500" />
+</p>
+<p align="center"><strong>Figure : </strong> The Configuration of D Flip Flop</p>
 
-
+Clock 1 and clock 2 are two phase non-overlapping clocks and ~CLK1 and ~CLK2 are their complements, respectively
+<p align="center">
+    <img src="./image-1.png" alt="The Internal Circuit" width="500" />
+</p>
+<p align="center"><strong>Figure : </strong> The Configuration of Clock&Clock~</p>
+When CLK1 is high, high input D go through the first transmission gate and inverter. At this time CLK1 is low, the second transmission gate is closed. ~Q is low. And when clock changing, CLK1 is low and CLK2 is high. The first transmission gate is closed and the second transmission gate is open. So ~Q goes through the second transmission gate and inverter then Q becomes high. And if input D is low, ~Q and Q will be inverse than the above situation.
 
 
 
