@@ -152,7 +152,7 @@ Each MUX is implemented using a pass-logic configuration, consisting of an inver
 For the D flip flop part, we choose to use two transmission gates and two inverters as the picture show below.
 
 <p align="center">
-    <img src="./image.png" alt="The Internal Circuit" width="500" />
+    <img src="./image-7.png" alt="The Internal Circuit" width="500" />
 </p>
 <p align="center"><strong>Figure : </strong> The Configuration of D Flip Flop</p>
 
