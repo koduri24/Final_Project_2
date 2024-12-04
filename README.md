@@ -17,6 +17,12 @@
 
 ## 1.1 5T SRAM
 
+The Schematic of 5T SRAM is shown below. The width of the NMOS transistor connected to the word line is 1.21 um, while the widths of all other PMOS and NMOS transistors are 120 nm.
+
+<p align="center">
+    <img src="./SRAM.png" alt="The Internal Circuit" width="500" />
+</p>
+<p align="center"><strong>Figure : </strong> The Schemaic of 5T SRAM</p>
 
 
 # 2. Design Description
@@ -25,7 +31,7 @@
 
 ### 2.1.1 Design of a 5T SRAM Cell
 
-In this section, we propose the design of a 5T SRAM cell, as it is expected to demonstrate improved performance compared to the traditional 6T SRAM design. 
+In this section, we propose the design of a 5T SRAM cell, as it is expected to demonstrate improved performance and higher density compared to the traditional 6T SRAM design. 
 
 <p align="center">
     <img src="./image-3.png" alt="The Internal Circuit" width="500" />
