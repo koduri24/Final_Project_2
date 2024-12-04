@@ -13,9 +13,9 @@
 In this section, we propose the design of a 5T SRAM cell, as it is expected to demonstrate improved performance compared to the traditional 6T SRAM design. The key components of the 5T SRAM cell and their functions are detailed as follows:
 
 **Key Components**
-1. **Cross-Coupled Inverters**
+1. **Cross-Coupled Inverters:**
 The 5T SRAM cell incorporates two cross-coupled inverters that serve as bistable elements for data storage. These inverters are connected such that the output of one inverter is fed into the input of the other, forming a feedback loop. This configuration ensures a stable storage of binary states (0 or 1), as it maintains either a strong 0 or a strong 1 under normal operating conditions.
-2. **Inverter for Load Signal Control**
+2. **Inverter for Load Signal Control:**
 An additional inverter is included to manage the load input signal. This inverter performs two crucial functions:
 
 * **Transmission Gate Activation:** When the load input is high, the inverter output becomes low, enabling the PMOS gate of the transmission gate to open. This allows data to be written into the cross-coupled inverters. Conversely, when the load input is low, the transmission gate is closed, preventing any unintended write operations, thereby satisfying the load requirement (i.e., the load signal is high during SRAM write operations).
