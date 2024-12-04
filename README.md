@@ -37,8 +37,14 @@ The schematic diagram of the inverter in above 5T SRAM and symbol of the 5T SRAM
 
 Next, we assemble 5T SRAMS to be 16 bits SRAM, the schematic and the symbol are shown belwo:
 
+<p align="center">
+    <img src="./image-4.png" alt="Design Schetch" width="300" />
+    <img src="./image-5.png" alt="The schetch of the wand" width="300" />
+</p>
 
-
+<p align="center">
+    <strong>Figure 8:</strong> The Schematic of the inverter and the symbol of the 5T SRAM
+</p>
 
 # 2. Design Description
 
