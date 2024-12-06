@@ -51,7 +51,32 @@ Next, we assemble 5T SRAMS to be 16 bits SRAM, the schematic and the symbol are 
 <p align="center"><strong>Figure : </strong> The Symbol of the 16bits SRAM</p>
 
 ## 1.2 LUT
+### Baseline Schematic of 2:1 MUX
 
+The grapgh below is baseline of 2:1 MUX:
+<p align="center">
+    <img src="./image-10.png" alt="The Internal Circuit" style="width: 500px;" />
+</p>
+<p align="center"><strong>Figure : </strong> The Schematic of the 2:1 MUX</p>
+<p align="center">
+    <img src="./image-9.png" alt="The Internal Circuit" style="width: 500px;" />
+</p>
+<p align="center"><strong>Figure : </strong> The Symbol of the 2:1 MUX</p>
+
+### Baseline Schematic of LUT
+
+Then we combine them together to get a 16bits LUT. Its circuit is shown below:
+
+<p align="center">
+    <img src="./image-11.png" alt="The Internal Circuit" style="width: 500px;" />
+</p>
+<p align="center"><strong>Figure : </strong> The Schematic of the 16 bits LUT MUX</p>
+<p align="center">
+    <img src="./image-12.png" alt="The Internal Circuit" style="width: 500px;" />
+</p>
+<p align="center"><strong>Figure : </strong> The Symbol of the 16bits LUT</p>
+
+## 1.3 D-flip flop
 
 
 
@@ -119,7 +144,7 @@ The 5T SRAM schematic features three single NMOS transistors with the following 
 
 ### 2.2.1 Design of The LUT with Pass-Logic Multiplexers
 
-To construct the LUT (Lookup Table), the design employs 15 pass-logic multiplexers (MUXs) arranged in a hierarchical structure, followed by two inverters at the final stage to enhance the output voltage to 5V. 
+To construct the LUT (Lookup Table), the design employs 15 pass-logic multiplexers (MUXs) arranged in a hierarchical structure, followed by two inverters at the final stage to enhance the output voltage to 1.1V. 
 
 <p align="center">
     <img src="./image-2.png" alt="The Internal Circuit" width="500" />
@@ -147,7 +172,7 @@ Each MUX is implemented using a pass-logic configuration, consisting of an inver
 - The address signal (s) also passes through the inverter, whose output is connected to the gate of the NMOS transistor tied to the input I0.
 - **Operation:** When the address signal (s) is high, the NMOS transistor associated with I1 is activated, transmitting I1 to the MUX output. When the address signal (s) is low, the NMOS transistor associated with I0 is activated, transmitting I0 to the output.
 
-### 2.3 D-Type Flip-Flop
+## 2.3 D-Type Flip-Flop
 
 For the D flip flop part, we choose to use two transmission gates and two inverters as the picture show below.
 
@@ -162,6 +187,7 @@ Clock 1 and clock 2 are two phase non-overlapping clocks and ~CLK1 and ~CLK2 are
     <img src="./image-6.png" alt="The Internal Circuit" width="500" />
 </p>
 <p align="center"><strong>Figure : </strong> The Configuration of Clock&Clock~</p>
+
 When CLK1 is high, high input D go through the first transmission gate and inverter. At this time CLK1 is low, the second transmission gate is closed. ~Q is low. And when clock changing, CLK1 is low and CLK2 is high. The first transmission gate is closed and the second transmission gate is open. So ~Q goes through the second transmission gate and inverter then Q becomes high. And if input D is low, ~Q and Q will be inverse than the above situation.
 
 
@@ -223,6 +249,59 @@ When CLK1 is high, high input D go through the first transmission gate and inver
 # 3. Design Validation/Verification
 
 ## 3.1 SRAM
+
+
+
+## 3.2 LUT
+### 3.2.1 Logic Correctness Check for a 2:1 MUX
+
+Here we set three inputs using different periods to simulate all cases and tried to prove it can funcation properly. Here is the test circuit for a single 2:1 MUX.
+<p align="center">
+    <img src="./image-13.png" alt="The Internal Circuit" width="500" />
+</p>
+<p align="center"><strong>Figure : </strong> The Test Circuit of a Single 2:1 MUX </p> 
+
+The simulation resuts are shown below, it give all cases of different inputs. 
+
+<p align="center">
+    <img src="./image-14.png" alt="The Internal Circuit" width="500" />
+</p>
+<p align="center"><strong>Figure : </strong> The Simulation Results of a Single 2:1 MUX </p> 
+
+
+
+### 3.2.2 Logic Correctness Check for the LUT
+
+Here we set all I_0 be same to be 1 and all I_1 be same to be 0. We created four Vpulse to simulate S_0~S_3[0:3], cycling their value from 0000 to 1111 to examine its logical correctness. And we still need to give a 100 Cg as load, so we add an inverter as load with width of 6u. The graph below shows its test circuit:
+
+<p align="center">
+    <img src="./1.jpg" alt="The Internal Circuit" width="500" />
+</p>
+<p align="center"><strong>Figure : </strong> The Test Circuit of the LUT </p> 
+
+We set the duty cycle of Vpulse V1, V2, V3, V4 to simulate S[0:3] from 0000 to 1111. The simulation results are shown below:
+
+<p align="center">
+    <img src="./image-16.png" alt="The Internal Circuit" width="500" />
+</p>
+<p align="center"><strong>Figure : </strong> The Simulation Results of the LUT </p> 
+
+Since we set the value of all 𝐼0 to be the same as well as 𝐼1. So the final result Out will mainly be decided by 𝑉pulse 3. We can see from the graph that in 16 cases:
+- When 𝑉pulse 3=1, Out is always 𝐼‾=1
+- When 𝑉pulse 3=0V, Out will always be 𝐼=1
+
+The Test Table is shown below:
+| addr input3 | addr input2 | addr input1 | addr input0 | before inv | after inv |
+|-------------|-------------|-------------|-------------|------------|-----------|
+| 1           | 1           | 1           | 1           | 0          | 1         |
+| 0           | 1           | 1           | 1           | 1          | 0         |
+| 1           | 0           | 1           | 1           | 0          | 1         |
+| 0           | 0           | 1           | 1           | 1          | 0         |
+| 1           | 1           | 0           | 1           | 0          | 1         |
+| 0           | 1           | 0           | 1           | 1          | 0         |
+| 1           | 0           | 0           | 1           | 0          | 1         |
+
+Through testing, we confirmed that the LUT operates correctly by producing different output values when the address input values are changed.
 
 # 4. Design Metric Test Cases
 
